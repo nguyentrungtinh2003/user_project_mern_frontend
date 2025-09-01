@@ -1,26 +1,19 @@
-import { NavLink, Outlet } from 'react-router'
-import { Button } from './ui/button'
+import { NavLink, Outlet } from "react-router";
+import { Button } from "./ui/button";
+import { useAuth } from "./contexts/AuthContext";
 
 const Home = () => {
-    return (
-        <>
-            <div className='flex flex-col gap-10 items-center justify-center'>
-                <div className='text-4xl font-semibold border-2 shadow-2xl'>Text Page</div>
-                <div className='flex flex-row gap-3'>
-                    <Button >
-                        <NavLink to='auth/login'>Login</NavLink>
-                    </Button>
-                    <Button>
-                        <NavLink to='auth/register'>Register</NavLink>
-                    </Button>
-                    <Button>
-                        <NavLink to='/'>Back</NavLink>
-                    </Button>
-                </div>
-            </div>
-            <Outlet />
-        </>
-    )
-}
+  const { logout } = useAuth();
+  return (
+    <>
+      <div className="flex flex-col items-center justify-between gap-10">
+        <div className="border-2 text-4xl font-semibold shadow-2xl">
+          Welcome to Home Page
+        </div>
+        <button onClick={logout}>Log out</button>
+      </div>
+    </>
+  );
+};
 
-export default Home
+export default Home;
