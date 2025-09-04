@@ -6,11 +6,13 @@ const Home = () => {
   const { logout } = useAuth();
   return (
     <>
-      <div className="flex flex-col items-center justify-between gap-10">
-        <div className="border-2 text-4xl font-semibold shadow-2xl">
+      <div className="container mx-auto max-w-2xl">
+        <div className="text-center border-2 text-4xl font-semibold shadow-2xl">
           Welcome to Home Page
         </div>
-        <button onClick={logout}>Log out</button>
+        <div className="flex justify-center cursor-pointer">
+          <Button variant="outline" onClick={logout} >Log out</Button>
+        </div>
       </div>
     </>
   );
