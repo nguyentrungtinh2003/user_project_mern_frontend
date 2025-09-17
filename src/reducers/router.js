@@ -1,5 +1,5 @@
-import { createRouterReducer } from '../libs/redux-router'
+import { createRouterReducer } from "../libs/redux-router";
 
-import history from '../history'
+import history from "../history";
 
-export default createRouterReducer(history)
+export default createRouterReducer(history);
