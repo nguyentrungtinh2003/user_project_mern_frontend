@@ -1,9 +1,8 @@
 import { Link, NavLink } from "react-router";
-import { Button } from "./ui/button";
+import { Button } from "./components/ui/button";
 import {
   ChartColumn,
   CheckCircle,
-  CircleCheck,
   Clock,
   FolderOpen,
   Mail,
@@ -12,15 +11,15 @@ import {
   Shield,
   Users,
 } from "lucide-react";
-import { Badge } from "./ui/badge";
+import { Badge } from "./components/ui/badge";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "./ui/card";
-import { Separator } from "./ui/separator";
+} from "./components/ui/card";
+import { Separator } from "./components/ui/separator";
 
 const Landing = () => {
   return (

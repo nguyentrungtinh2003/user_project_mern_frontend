@@ -1,6 +1,6 @@
 import { AlertCircle, Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
-import { Button } from "../ui/button";
+import { Button } from "../components/ui/button";
 import { useAuth } from "../contexts/AuthContext";
 import {
   Card,
@@ -8,10 +8,10 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "../ui/card";
-import { Label } from "../ui/label";
-import { Input } from "../ui/input";
-import { Alert, AlertDescription } from "../ui/alert";
+} from "../components/ui/card";
+import { Label } from "../components/ui/label";
+import { Input } from "../components/ui/input";
+import { Alert, AlertDescription } from "../components/ui/alert";
 import { Link, useNavigate } from "react-router";
 
 const Login = () => {

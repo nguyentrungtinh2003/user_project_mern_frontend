@@ -1,11 +1,16 @@
 import { createBrowserRouter, Navigate, Outlet } from "react-router";
 import App from "../App";
-import NotFound from "./NotFound";
-import Login from "./Auth/login";
-import Home from "./home";
-import Register from "./Auth/register";
-import Landing from "./Landing";
 import { useAuth } from "./contexts/AuthContext";
+import {
+  Layout,
+  Home,
+  Login,
+  Register,
+  Landing,
+  Profile,
+  NotFound,
+  UserManagement,
+} from "./index";
 
 const ProtectedRoute = () => {
   const { isAuthenticated } = useAuth();
@@ -47,12 +52,26 @@ const router = createBrowserRouter([
       },
       {
         Component: ProtectedRoute,
-        children: [{ path: "home", Component: Home }],
+        children: [
+          {
+            index: "/",
+            Component: Layout,
+            children: [
+              { path: "home", Component: Home },
+              { path: "profile", Component: Profile },
+            ],
+          },
+        ],
       },
       {
-        path: "admin",
         Component: AdminRoute,
-        children: [],
+        children: [
+          {
+            index: "/",
+            Component: Layout,
+            children: [{ path: "users", Component: UserManagement }],
+          },
+        ],
       },
     ],
   },

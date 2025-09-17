@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
-import { Button } from "../ui/button";
-import { Input } from "../ui/input";
-import { Label } from "../ui/label";
+import { Button } from "../components/ui/button";
+import { Input } from "../components/ui/input";
+import { Label } from "../components/ui/label";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "../ui/card";
-import { Alert, AlertDescription } from "../ui/alert";
+} from "../components/ui/card";
+import { Alert, AlertDescription } from "../components/ui/alert";
 import { Eye, EyeOff, AlertCircle, CheckCircle } from "lucide-react";
 import { Link, useNavigate } from "react-router";
 

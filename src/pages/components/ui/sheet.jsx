@@ -101,7 +101,7 @@ const SheetDescription = ({ className, ...props }) => {
   );
 };
 
-export default {
+export {
   Sheet,
   SheetTrigger,
   SheetClose,
