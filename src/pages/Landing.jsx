@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router";
-import { Button } from "./components/ui/button";
+import { Button } from "../components/ui/button";
 import {
   ChartColumn,
   CheckCircle,
@@ -11,17 +11,22 @@ import {
   Shield,
   Users,
 } from "lucide-react";
-import { Badge } from "./components/ui/badge";
+import { Badge } from "../components/ui/badge";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "./components/ui/card";
-import { Separator } from "./components/ui/separator";
+} from "../components/ui/card";
+import { Separator } from "../components/ui/separator";
+import { useSelector } from "react-redux";
+import { selectUser } from "../features/auth/authSlice";
+import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar";
 
 const Landing = () => {
+  const checkUser = useSelector(selectUser)
+
   return (
     <div className="bg-background min-h-screen">
       {/* Header */}
@@ -33,14 +38,28 @@ const Landing = () => {
             </div>
             <span className="text-xl font-semibold">ProjectHub</span>
           </div>
-          <div className="flex space-x-3">
-            <Button variant="outline" asChild>
-              <NavLink to="auth/login">Log In</NavLink>
-            </Button>
-            <Button asChild>
-              <NavLink to="auth/register">Get Started</NavLink>
-            </Button>
-          </div>
+          {checkUser && checkUser?.username ? (
+            <div className="flex space-x-3 items-center">
+              <Avatar>
+                <AvatarImage src={checkUser.image} />
+                <AvatarFallback>
+                  {checkUser?.username.charAt(0).toUpperCase()}
+                </AvatarFallback>
+              </Avatar>
+              <div>
+                <div className="font-semibold text-muted-foreground">{checkUser.username}</div>
+              </div>
+            </div >
+          ) : (
+            <div className="flex space-x-3">
+              <Button variant="outline" asChild>
+                <NavLink to="auth/login">Log In</NavLink>
+              </Button>
+              <Button asChild>
+                <NavLink to="auth/register">Get Started</NavLink>
+              </Button>
+            </div>
+          )}
         </div>
       </header>
       {/* Hero section */}
