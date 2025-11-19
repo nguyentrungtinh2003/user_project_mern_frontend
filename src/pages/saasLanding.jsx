@@ -1,10 +1,6 @@
-import { useSelector } from "react-redux"
-import { selectUser } from "../features/auth/authSlice"
 import { CTASection, FeaturesSection, Footer, HeroSection, Navigation, PricingSection, ProductSreenshortsSection, TestimonialsSection } from "../components/landing";
 
 const Landing = () => {
-    const checkUser = useSelector(selectUser);
-
     return (
         <div className="min-h-screen bg-background">
             {/* Navigation */}

@@ -26,13 +26,13 @@ const HeroSection = () => {
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                         <Button size="lg" className="text-lg px-8" asChild>
-                            <Link to="/register">
+                            <Link to="auth/register">
                                 Get Started Free
                                 <ArrowRight className="ml-2 h-5 w-5" />
                             </Link>
                         </Button>
                         <Button size="lg" variant="outline" className="text-lg px-8" asChild>
-                            <Link to="/login">
+                            <Link to="auth/login">
                                 Login
                             </Link>
                         </Button>

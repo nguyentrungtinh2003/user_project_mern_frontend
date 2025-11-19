@@ -56,7 +56,7 @@ const PricingSection = () => {
                                         variant={plan.popular ? 'default' : 'outline'}
                                         asChild
                                     >
-                                        <Link to="/register">{plan.cta}</Link>
+                                        <Link to="auth/register">{plan.cta}</Link>
                                     </Button>
                                 </CardFooter>
                             </Card>
