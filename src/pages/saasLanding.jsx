@@ -1,4 +1,13 @@
-import { CTASection, FeaturesSection, Footer, HeroSection, Navigation, PricingSection, ProductSreenshortsSection, TestimonialsSection } from "../components/landing";
+import {
+    CTASection,
+    FeaturesSection,
+    Footer,
+    HeroSection,
+    Navigation,
+    PricingSection,
+    ProductSreenshortsSection,
+    TestimonialsSection
+} from "../components/landing/Index";
 
 const Landing = () => {
     return (

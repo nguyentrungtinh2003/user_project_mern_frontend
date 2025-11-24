@@ -230,6 +230,7 @@ const Sidebar = ({
   );
 };
 
+
 const SidebarTrigger = ({ className, ref, onClick, ...props }) => {
   const { toggleSidebar } = useSidebar();
   return (
@@ -484,6 +485,7 @@ SidebarMenuSubButton.displayName = "SidebarMenuSubButton";
 
 export {
   Sidebar,
+
   SidebarTrigger,
   SidebarRail,
   SidebarInset,

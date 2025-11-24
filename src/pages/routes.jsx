@@ -6,6 +6,7 @@ import {
   Landing,
   Profile,
   NotFound,
+  TasksPage,
   // UserManagement,
 } from "./index";
 import { Login, PublicRole, Register, RequireRole } from "../features/auth/components";
@@ -38,6 +39,7 @@ const router = createBrowserRouter([
             children: [
               { path: "home", Component: Home, errorElement: <div>Error Home page</div> },
               { path: "profile", Component: Profile, errorElement: <div>Error Profile page</div> },
+              { path: "tasks", Component: TasksPage, errorElement: <div>Error Tasks page</div> },
               // { path: "profile/:id?edit=true", Component: Profile, errorElement: <div>Error Profile edit page</div> },
             ],
           },

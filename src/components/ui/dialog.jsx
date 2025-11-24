@@ -5,7 +5,13 @@ import { XIcon } from "lucide-react";
 const Dialog = ({ ...props }) => {
   return <DialogPrimitive.Root data-slot="dialog" {...props} />;
 };
-const DialogTrigger = ({ }) => { };
+const DialogTrigger = ({ ref, ...props }) => {
+  return <DialogPrimitive.Trigger
+    ref={ref}
+    data-slot="dialog-trigger"
+    {...props}
+  />
+};
 DialogTrigger.displayName = DialogPrimitive.Trigger.displayName;
 const DialogPortal = ({ ...props }) => {
   return <DialogPrimitive.Portal data-slot="dialog-portal" {...props} />;
@@ -64,7 +70,16 @@ const DialogHeader = ({ className, ...props }) => {
     />
   );
 };
-const DialogFooter = ({ }) => { };
+const DialogFooter = ({ className, ...props }) => {
+  return <div
+    data-slot="dialog-footer"
+    className={cn(
+      "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
+      className,
+    )}
+    {...props}
+  />
+};
 const DialogTitle = ({ className, ref, ...props }) => {
   return (
     <DialogPrimitive.Title
