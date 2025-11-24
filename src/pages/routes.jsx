@@ -1,78 +1,60 @@
-import { createBrowserRouter, Navigate, Outlet } from "react-router";
+import { createBrowserRouter } from "react-router";
 import App from "../App";
-import { useAuth } from "./contexts/AuthContext";
 import {
   Layout,
   Home,
-  Login,
-  Register,
   Landing,
   Profile,
   NotFound,
-  UserManagement,
+  TasksPage,
+  // UserManagement,
 } from "./index";
+import { Login, PublicRole, Register, RequireRole } from "../features/auth/components";
+import { ROLES } from "../constants/roles";
 
-const ProtectedRoute = () => {
-  const { isAuthenticated } = useAuth();
-  return isAuthenticated ? <Outlet /> : <Navigate to="/" replace />;
-};
-
-const AdminRoute = () => {
-  const { isAuthenticated, isAdmin } = useAuth();
-
-  if (!isAuthenticated) {
-    return <Navigate to="/" replace />;
-  }
-
-  if (!isAdmin) {
-    return <Navigate to="/home" replace />;
-  }
-
-  return <Outlet />;
-};
-
-const PublicRoute = () => {
-  const { isAuthenticated } = useAuth();
-  return isAuthenticated ? <Navigate to="/home" replace /> : <Outlet />;
-};
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: App,
+    errorElement: <div>Error App page</div>,
     children: [
-      { index: true, Component: Landing },
+      { index: true, Component: Landing, errorElement: <div>Error Landing page</div> },
       {
         path: "auth",
-        Component: PublicRoute,
+        Component: PublicRole,
+        errorElement: <div>Error auth page</div>,
         children: [
-          { path: "login", Component: Login },
-          { path: "register", Component: Register },
+          { path: "login", Component: Login, errorElement: <div>Error Login page</div> },
+          { path: "register", Component: Register, errorElement: <div>Error Register page</div> },
         ],
       },
       {
-        Component: ProtectedRoute,
+        element: <RequireRole roles={[ROLES.EMPLOYEE, ROLES.ADMIN, ROLES.MANAGER]} />,
         children: [
           {
             index: "/",
             Component: Layout,
+            errorElement: <div>Error Layout page</div>,
             children: [
-              { path: "home", Component: Home },
-              { path: "profile", Component: Profile },
+              { path: "home", Component: Home, errorElement: <div>Error Home page</div> },
+              { path: "profile", Component: Profile, errorElement: <div>Error Profile page</div> },
+              { path: "tasks", Component: TasksPage, errorElement: <div>Error Tasks page</div> },
+              // { path: "profile/:id?edit=true", Component: Profile, errorElement: <div>Error Profile edit page</div> },
             ],
           },
         ],
       },
-      {
-        Component: AdminRoute,
-        children: [
-          {
-            index: "/",
-            Component: Layout,
-            children: [{ path: "users", Component: UserManagement }],
-          },
-        ],
-      },
+      // {
+      //   Component: AdminRoute,
+      //   children: [
+      //     {
+      //       index: "/",
+      //       Component: Layout,
+      //       children: [{ path: "users", Component: UserManagement }],
+      //     },
+      //   ],
+      // },
     ],
   },
 
